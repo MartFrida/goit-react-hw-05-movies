@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { fetchMovieByQuery, fetchTrending } from '../services/api'
+import React, { useState } from 'react'
+import { fetchMovieByQuery } from '../services/api'
 import { Link, useSearchParams } from 'react-router-dom/dist';
 import { useHttp } from '../components/hooks/useHttp';
 
 const Movies = () => {
-  // const [movies, setMovies] = useState([]);
-  // useEffect(() => {
-  //   fetchTrending().then(res => setMovies(res))
-  // }, [])
-  // console.log(movies)
+
   const [searchParams, setSearchParams] = useSearchParams()
   const query = searchParams.get('query') || ''
   const [movies] = useHttp(fetchMovieByQuery, query)
-  // hook useSearchParams
+
 
   const [value, setValue] = useState('')
   const handleSetSearchQuery = () => {
