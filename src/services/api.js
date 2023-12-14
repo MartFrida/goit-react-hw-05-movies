@@ -5,6 +5,7 @@ const API_KEY = '85e6bdfb8ec7cb55f85ebb0c0a551952'
 const options = {
   params: {
     api_key: API_KEY,
+
   }
 }
 
@@ -16,7 +17,19 @@ export const fetchTrending = async () => {
 
 export const fetchMovieById = async id => {
   const { data } = await axios.get(`movie/${id}`, options)
-  console.log(data)
+  // console.log(data)
+  return data
+}
+
+export const fetchMovieByIdCast = async id => {
+  const { data } = await axios.get(`movie/${id}/credits`, options)
+  // console.log(data)
+  return data
+}
+
+export const fetchMovieByIdReviews = async id => {
+  const { data } = await axios.get(`movie/${id}/reviews`, options)
+  // console.log(data)
   return data
 }
 

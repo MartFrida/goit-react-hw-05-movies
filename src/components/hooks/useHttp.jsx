@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { fetchMovieById } from "../../services/api"
 
 export const useHttp = (fn, params) => {
   const [data, setData] = useState()

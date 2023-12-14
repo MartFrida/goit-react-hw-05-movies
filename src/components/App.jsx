@@ -1,12 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-
 import Home from '../pages/Home';
 import Layout from './Layout';
 import NotFound from '../pages/NotFound';
 import Movies from '../pages/Movies';
 import MovieDetails from '../pages/MovieDetails';
-import InfoDetails from './moviesNestedRoutes/InfoDetails';
-import Actors from './moviesNestedRoutes/Actors';
+import Reviews from './moviesNestedRoutes/Reviews';
+import Cast from './moviesNestedRoutes/Cast';
 
 export const App = () => {
   return (
@@ -16,8 +15,8 @@ export const App = () => {
           <Route index element={<Home />} />
           <Route path='movies' element={<Movies />} />
           <Route path='movies/:movieId' element={<MovieDetails />}>
-            <Route path='info' element={<InfoDetails />} />
-            <Route path='actors' element={<Actors />} />
+            <Route path='cast' element={<Cast />} />
+            <Route path='reviews' element={<Reviews />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Route>

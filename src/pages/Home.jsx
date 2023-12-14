@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchTrending } from '../services/api'
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -8,8 +8,6 @@ const Home = () => {
     fetchTrending().then(res => setMovies(res))
   }, [])
   console.log(movies)
-
-
 
   return (
     <ul>
