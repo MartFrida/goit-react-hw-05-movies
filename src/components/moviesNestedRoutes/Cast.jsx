@@ -8,7 +8,7 @@ const Cast = () => {
   const [movieData] = useHttp(fetchMovieByIdCast, movieId)
 
   if (!movieData) return <h1>Loading...</h1>
-  console.log(movieData?.cast)
+  // console.log(movieData?.cast)
   return (
     <div>
       <ul>

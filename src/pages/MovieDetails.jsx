@@ -10,7 +10,7 @@ const MovieDetails = () => {
   console.log(movieId)
   const navigate = useNavigate()
   const [movie] = useHttp(fetchMovieById, movieId)
-
+  console.log(movie)
   if (!movie) return <h1>Loading...</h1>
 
   const handleGoBack = () => {
@@ -18,14 +18,26 @@ const MovieDetails = () => {
   }
 
   return (
-    <div>
+    <>
       <button onClick={handleGoBack}>Go back</button>
-      <p>{movie?.title}</p>
-      <hr />
-      <Link to='cast'>Actors</Link>
-      <Link to='reviews'>Reviews</Link>
-      <Outlet />
-    </div>
+      <div>
+        <img src={movie?.backdrop_path} alt={movie?.title} />
+        <h1>{movie?.title}</h1>
+        <p>Release date: {movie?.release_date}</p>
+        <h2>Overview</h2>
+        <p>{movie?.overview}</p>
+        <h2>Genres</h2>
+        <ul>
+          {movie?.genres.map(genre => { return <li key={genre.id}>{genre.name}</li> })}
+        </ul>
+        {/* <p>{movie?.overview}</p> */}
+        <hr />
+        <Link to='cast'>Actors</Link>
+        <Link to='reviews'>Reviews</Link>
+        <Outlet />
+      </div>
+    </>
+
   )
 }
 

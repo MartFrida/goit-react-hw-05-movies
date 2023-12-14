@@ -7,7 +7,7 @@ const Reviews = () => {
   const { movieId } = useParams();
   const [movieReviews] = useHttp(fetchMovieByIdReviews, movieId)
   if (!movieReviews) return <h1>Loading...</h1>
-  console.log(movieReviews?.results)
+  // console.log(movieReviews?.results)
   return (
     <div>
       <ul>

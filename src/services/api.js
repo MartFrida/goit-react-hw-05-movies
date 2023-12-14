@@ -5,7 +5,6 @@ const API_KEY = '85e6bdfb8ec7cb55f85ebb0c0a551952'
 const options = {
   params: {
     api_key: API_KEY,
-
   }
 }
 
