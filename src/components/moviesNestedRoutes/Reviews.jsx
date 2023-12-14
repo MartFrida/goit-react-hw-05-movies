@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useHttp } from '../hooks/useHttp';
-import { fetchMovieById, fetchMovieByIdReviews } from '../../services/api';
+import { fetchMovieByIdReviews } from '../../services/api';
 
 const Reviews = () => {
   const { movieId } = useParams();
