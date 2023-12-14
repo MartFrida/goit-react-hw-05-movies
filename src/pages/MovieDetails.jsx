@@ -10,7 +10,7 @@ const MovieDetails = () => {
   console.log(movieId)
   const navigate = useNavigate()
   const [movie] = useHttp(fetchMovieById, movieId)
-  console.log(movie)
+  // console.log(movie)
   if (!movie) return <h1>Loading...</h1>
 
   const handleGoBack = () => {
