@@ -6,7 +6,7 @@ import { useHttp } from '../components/hooks/useHttp';
 const MovieDetails = () => {
   const { movieId } = useParams();
   // console.log(movieId)
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const location = useLocation()
   console.log(location)
   const goBackRef = useRef(location.state?.from || '/')
@@ -14,9 +14,9 @@ const MovieDetails = () => {
   console.log(movie)
   if (!movie) return <h1>Loading...</h1>
 
-  const handleGoBack = () => {
-    navigate('/')
-  }
+  // const handleGoBack = () => {
+  //   navigate('/')
+  // }
   const { poster_path, title, release_date, overview, genres } = movie;
   return (
     <>
