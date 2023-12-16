@@ -1,14 +1,15 @@
-import React from 'react'
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom/dist'
+import React, { Suspense, useRef } from 'react'
+import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { fetchMovieById } from '../services/api';
 import { useHttp } from '../components/hooks/useHttp';
 
-
-
 const MovieDetails = () => {
   const { movieId } = useParams();
-  console.log(movieId)
+  // console.log(movieId)
   const navigate = useNavigate()
+  const location = useLocation()
+  console.log(location)
+  const goBackRef = useRef(location.state?.from || '/')
   const [movie] = useHttp(fetchMovieById, movieId)
   // console.log(movie)
   if (!movie) return <h1>Loading...</h1>
@@ -19,7 +20,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <button onClick={handleGoBack}>Go back</button>
+      <Link to={goBackRef.current}>Go back to movies!</Link>
       <div>
         <img src={movie?.backdrop_path} alt={movie?.title} />
         <h1>{movie?.title}</h1>
@@ -34,7 +35,9 @@ const MovieDetails = () => {
         <hr />
         <Link to='cast'>Actors</Link>
         <Link to='reviews'>Reviews</Link>
-        <Outlet />
+        <Suspense fallback={<h2>Loading second Suspense</h2>}>
+          <Outlet />
+        </Suspense>
       </div>
     </>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { fetchMovieByQuery } from '../services/api'
-import { Link, useSearchParams } from 'react-router-dom/dist';
+import { Link, useLocation, useSearchParams } from 'react-router-dom/dist';
 import { useHttp } from '../components/hooks/useHttp';
 
 const Movies = () => {
@@ -8,8 +8,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const query = searchParams.get('query') || ''
   const [movies] = useHttp(fetchMovieByQuery, query)
-
-
+  const location = useLocation()
   const [value, setValue] = useState('')
   const handleSetSearchQuery = () => {
     setSearchParams(value ? { query: value } : {})
@@ -24,7 +23,7 @@ const Movies = () => {
       <ul>
         {movies?.map(movie =>
           <li key={movie.id}>
-            <Link to={movie.id.toString()}> {movie.original_title}</Link>
+            <Link state={{ from: location }} to={movie.id.toString()}> {movie.original_title}</Link>
           </li>
         )}
       </ul>
