@@ -13,7 +13,6 @@ const MovieDetails = () => {
   console.log(movie)
   if (!movie) return <h1>Loading...</h1>
 
-
   const { poster_path, title, release_date, overview, genres } = movie;
   return (
     <>
