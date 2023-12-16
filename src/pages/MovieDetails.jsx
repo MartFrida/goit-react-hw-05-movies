@@ -31,10 +31,10 @@ const MovieDetails = () => {
         <StyledList>
           <Link to='cast'>Actors</Link>
           <Link to='reviews'>Reviews</Link>
-          <Suspense fallback={<h2>Loading second Suspense</h2>}>
-            <Outlet />
-          </Suspense>
         </StyledList>
+        <Suspense fallback={<h2>Loading second Suspense</h2>}>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   )
