@@ -2,11 +2,10 @@ import React, { Suspense, useRef } from 'react'
 import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { fetchMovieById } from '../services/api';
 import { useHttp } from '../components/hooks/useHttp';
+import styled from 'styled-components';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  // console.log(movieId)
-  // const navigate = useNavigate()
   const location = useLocation()
   console.log(location)
   const goBackRef = useRef(location.state?.from || '/')
@@ -14,9 +13,7 @@ const MovieDetails = () => {
   console.log(movie)
   if (!movie) return <h1>Loading...</h1>
 
-  // const handleGoBack = () => {
-  //   navigate('/')
-  // }
+
   const { poster_path, title, release_date, overview, genres } = movie;
   return (
     <>
@@ -32,15 +29,22 @@ const MovieDetails = () => {
           {genres.map(genre => { return <li key={genre.id}>{genre.name}</li> })}
         </ul>
         <hr />
-        <Link to='cast'>Actors</Link>
-        <Link to='reviews'>Reviews</Link>
-        <Suspense fallback={<h2>Loading second Suspense</h2>}>
-          <Outlet />
-        </Suspense>
+        <StyledList>
+          <Link to='cast'>Actors</Link>
+          <Link to='reviews'>Reviews</Link>
+          <Suspense fallback={<h2>Loading second Suspense</h2>}>
+            <Outlet />
+          </Suspense>
+        </StyledList>
       </div>
     </>
-
   )
 }
 
 export default MovieDetails
+
+const StyledList = styled.div`
+a{
+  margin: 10px;
+}
+`
