@@ -11,25 +11,25 @@ const MovieDetails = () => {
   console.log(location)
   const goBackRef = useRef(location.state?.from || '/')
   const [movie] = useHttp(fetchMovieById, movieId)
-  // console.log(movie)
+  console.log(movie)
   if (!movie) return <h1>Loading...</h1>
 
-  const handleGoBack = () => {
-    navigate('/')
-  }
-
+  // const handleGoBack = () => {
+  //   navigate('/')
+  // }
+  const { poster_path, title, release_date, overview, genres } = movie;
   return (
     <>
       <Link to={goBackRef.current}>Go back to movies!</Link>
       <div>
-        <img src={movie?.backdrop_path} alt={movie?.title} />
-        <h1>{movie?.title}</h1>
-        <p>Release date: {movie?.release_date}</p>
+        <img src={poster_path} alt={title} />
+        <h1>{title}</h1>
+        <p>Release date: {release_date}</p>
         <h2>Overview</h2>
-        <p>{movie?.overview}</p>
+        <p>{overview}</p>
         <h2>Genres</h2>
         <ul>
-          {movie?.genres.map(genre => { return <li key={genre.id}>{genre.name}</li> })}
+          {genres.map(genre => { return <li key={genre.id}>{genre.name}</li> })}
         </ul>
         {/* <p>{movie?.overview}</p> */}
         <hr />
@@ -40,7 +40,6 @@ const MovieDetails = () => {
         </Suspense>
       </div>
     </>
-
   )
 }
 
