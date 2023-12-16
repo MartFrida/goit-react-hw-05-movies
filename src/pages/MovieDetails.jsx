@@ -14,9 +14,9 @@ const MovieDetails = () => {
   console.log(movie)
   if (!movie) return <h1>Loading...</h1>
 
-  // const handleGoBack = () => {
-  //   navigate('/')
-  // }
+  const handleGoBack = () => {
+    navigate('/')
+  }
   const { poster_path, title, release_date, overview, genres } = movie;
   return (
     <>
@@ -31,7 +31,6 @@ const MovieDetails = () => {
         <ul>
           {genres.map(genre => { return <li key={genre.id}>{genre.name}</li> })}
         </ul>
-        {/* <p>{movie?.overview}</p> */}
         <hr />
         <Link to='cast'>Actors</Link>
         <Link to='reviews'>Reviews</Link>
@@ -40,6 +39,7 @@ const MovieDetails = () => {
         </Suspense>
       </div>
     </>
+
   )
 }
 
