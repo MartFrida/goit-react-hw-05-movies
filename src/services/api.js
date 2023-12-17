@@ -1,4 +1,5 @@
 import axios from "axios"
+export const BASE_URL_FOR_IMG = 'https://image.tmdb.org/t/p/w500'
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/'
 const API_KEY = '85e6bdfb8ec7cb55f85ebb0c0a551952'
