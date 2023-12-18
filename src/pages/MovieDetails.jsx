@@ -1,16 +1,14 @@
 import React, { Suspense, useRef } from 'react'
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom'
 import { BASE_URL_FOR_IMG, fetchMovieById } from '../services/api';
-import { useHttp } from '../components/hooks/useHttp';
+import { useHttp } from '../hooks/useHttp';
 import styled from 'styled-components';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation()
-  console.log(location)
   const goBackRef = useRef(location.state?.from || '/')
   const [movie] = useHttp(fetchMovieById, movieId)
-  console.log(movie)
   if (!movie) return <h1>Loading...</h1>
 
   const { poster_path, title, release_date, overview, genres } = movie;

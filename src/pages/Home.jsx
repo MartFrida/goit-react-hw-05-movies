@@ -7,7 +7,6 @@ const Home = () => {
   useEffect(() => {
     fetchTrending().then(res => setMovies(res))
   }, [])
-  console.log(movies)
 
   return (
     <ul>
